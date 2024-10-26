@@ -7,15 +7,16 @@
 </head>
 <body>
 <form>
-    <fieldset>
+ <fieldset>
+    <legend> Personal information</legend>
     <label for="firstname">First name:</label><br>
-    <input type="text" name="firstname" id="firtsname"><br>
+    <input type="text" name="firstname" id="firtsname" required><br>
     <label for="lastname">last name</label><br>
-    <input type="text" name="lastname" id="lastname"><br>]
+    <input type="text" name="lastname" id="lastname" required><br>]
     <label for="email">Email</label><br>
-    <input type="email" name="email" id="email">
+    <input type="email" name="email" id="email" size="40">
     <label for="password">Password</label><br>
-    <input type="password" name="password" id="password"><br>
+    <input type="password" name="password" id="password" max="12"><br>
     <label >Gender</label><BR>
     <input type="radio" name="gender" id="male" value="male">
     <label for="male">Male</label><br>
@@ -39,6 +40,13 @@
     <input type="submit" id="submit" name="submit"><br>
 </fieldset>
 </form>
-    
+    <article>
+        <h2>html</h2>
+        <p> this is a paragraph</p>
+    </article>
+    <details>
+        <summary> Digital Scholl</summary>
+        <p> this is a pharagraph</p>
+    </details>
 </body>
 </html>
