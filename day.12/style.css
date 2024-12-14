@@ -1,0 +1,72 @@
+h1{
+    color: bisque;
+    letter-spacing: 10px;
+    word-spacing: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular',
+     'Lucida Grande', 'Lucida Sans Unicode',
+      Geneva, Verdana, sans-serif;
+}
+p{
+    text-indent: 250px;
+    text-align: left;
+    font-family: "pixelmania";
+}
+body{
+    background :linear-gradient( to left, red,orange) ;
+}
+h2{
+    text-decoration: overline;
+}
+h3{
+    text-decoration: line-through;
+    font-family: "pixelmania";
+}
+h4{
+    text-decoration: underline;
+}
+@font-face {
+    font-family: "pixelmania";
+    src: url(pixelmania/Pixelmania.ttf);
+}
+.test{
+    color: blue;
+    text-align: right;
+    background-color: blanchedalmond;
+}
+.p1{
+    color: beige;
+    background-color: red;
+}
+#p2{
+    font-style: normal;
+    color: red;
+    text-align: left;
+    font-weight: normal;
+}
+#p3{
+    font-style: italic;
+    color: yellow;
+    text-align: left;
+    font-weight: bold;
+}
+#p4{
+    font-style: oblique;
+    color: lime;
+    text-align: left;
+    font-weight: 800;
+}
+a:link{
+    color: green;
+}
+a:visited{
+color: brown;
+}
+a:hover{
+    color: aqua;
+
+}
+a:active{
+color: yellow;
+}
+
+
