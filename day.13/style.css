@@ -1,0 +1,44 @@
+body{
+    background :linear-gradient( to left, red,orange) ;
+}
+ol{
+    background-color: blue;
+}
+ol li{
+    padding: 20px;
+    border-bottom: 1px solid black;
+}
+ul{
+    list-style-type: circle;
+background-color: antiquewhite; 
+border: 2px solid black;   
+}
+ul li{
+    padding: 15px;
+    background-color: blueviolet;
+    border-bottom: 1px solid gray;
+}
+td,th{
+    border: 1px solid lightblue;
+    padding: 10px;
+}
+table{
+/* border-collapse: collapse: */
+}
+tbody tr:nth-child(even){
+background-color: lightcoral;
+}
+tbody tr:nth-child(odd){
+    background-color: antiquewhite;
+    }
+div{
+    overflow: scroll;
+    background-color: aquamarine;
+    width: 200px;
+    height: 250px;
+}
+#table{
+    background-color: aqua;
+    width: auto;
+    height: auto;
+}
