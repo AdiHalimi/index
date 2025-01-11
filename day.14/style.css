@@ -1,0 +1,70 @@
+/*1. decendants combinator (space)- select elements inside other elements(like parent and child)*/
+article p{
+    background-color: blue;
+    color: beige;
+    padding: 23px;
+}
+/* 2. child combinator (>) - selects direct children inside an element */
+article > p{
+    background-color: brown;
+} /* 3. general sibling combimator (~) - selects all siblings after an element*/
+article ~ p{
+    background-color: chocolate;
+    color: azure;
+    padding: 25px;
+}
+body{
+    background :linear-gradient( to left, red,orange) ;
+}
+/* 4. adjacent sibling  combinator (+) - selects the next sibling after an elemnt */
+article + p{
+    background-color: blueviolet;
+}
+/* :first-child - pseudo class we use it when we want to style the first element */
+h3:first-child{
+    background-color:green;
+    color: beige;
+    padding: 25px;
+}
+h3:last-child{
+    background-color: greenyellow;
+}
+/* input{
+    width: 50px;
+}
+input:in-range{
+border: 3px solid green;
+}
+input:out-of-range{
+    border: 3px solid red
+}
+input:required{
+    background-color: lightblue;
+} */
+ input[name="name"]:valid{
+    border: 5px solid green;
+ } input[name="name"]:invalid{
+    border: 5px solid red;
+ }
+span:first-of-type{
+    background-color: black;
+    color: azure;
+    padding: 25px;
+}
+#p1::first-line{
+font-size: 30px;
+    color: blue;
+}
+  #p1::before{
+    width: 20px;
+    height: 25px;
+
+    content: url(images.jpg);
+} 
+ ::selection{
+    color: black;
+    background: beige;
+ }
+ div{
+    opacity: 0.5;
+ }
