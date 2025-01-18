@@ -1,0 +1,49 @@
+div#static{
+    position: static;
+    border: 3px solid blue;
+    width: 250px;
+height: 250px;
+padding: 20px;
+}
+div#relative{    position: relative;
+    border: 3px solid blue;
+    width: 250px;
+height: 250px;
+padding: 20px;
+left: 230px;
+top: 25px;
+}
+div#fixed{position: fixed;
+    border: 3px solid blue;
+    width: 250px;
+height: 250px;
+padding: 20px;
+right:200px;
+top: 10px;
+
+}
+div#patent{
+    position: relative;
+    border: 3px solid blue;
+    width: 250px;
+height: 250px;
+top: 100px;
+}
+div#absolute{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    right: 25px;
+    color: bisque;
+}
+div#sticky{
+    position: sticky;
+    top: 0px;
+background-color: blue;
+color: brown;
+padding: 25px;
+}
+body{
+    background :linear-gradient( to left, red,orange) ;
+}
