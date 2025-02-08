@@ -30,3 +30,32 @@ div.desc{
     display: inline-block;
     background-position: -500px 0;
 }
+a[href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"]{
+    color: red;
+}
+
+p[class*="ds"]{
+    color: blueviolet;
+    background-color: aliceblue;
+    padding: 30px;
+}
+
+div[id~="ds"]{
+    background: blue;
+    color: beige;
+    padding: 25px;
+}
+img[title^="blue"]{
+    border:3px solid blue;
+}
+h1[class|="heading"]{
+    background: purple;
+    color: aqua;
+    padding: 20px;
+}
+input[placeholder $="name"] {
+    border: 3px solid red;
+}
+input[readonly]{
+    border: 3px solid green;
+}
