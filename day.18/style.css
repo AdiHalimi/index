@@ -1,0 +1,132 @@
+body{
+    background :linear-gradient( to left, rgb(83, 70, 70),rgb(212, 197, 167)) ;
+}
+div#translate{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color: aliceblue;
+    background-color: aqua;
+    transform: translate(100px,50px);
+    padding: 13px;
+}
+div#rotate{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color: rgb(45, 121, 187);
+    background-color:greenyellow;
+    transform: rotate(130deg);
+    padding: 13px;
+    margin-top: 180px;
+}
+div#scale{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color: black;
+    background-color:brown;
+    transform: scale(3,2);
+    padding: 13px;
+    margin-top: 180px;
+}
+div#scaleX{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:lightpink;
+    background-color:blue;
+    transform: scaleX(4);
+    padding: 13px;
+    margin-top: 180px;
+    margin-right: 300px;
+}
+div#scaleY{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:lightpink;
+    background-color:rgb(146, 121, 12);
+    transform: scaleY(3);
+    padding: 13px;
+    margin-top: 180px;
+}
+div#skewX{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:lightpink;
+    background-color:rgb(146, 12, 95);
+    transform: skewX(-45deg);
+    padding: 13px;
+    margin-top: 180px;
+    margin-left: 135px;
+}
+div#skewY{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:lightpink;
+    background-color:rgb(11, 199, 136);
+    transform: skewY(45deg);
+    padding: 13px;
+    margin-top: 180px;
+    margin-left: 115px;
+}
+div#rotateX{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:rgb(204, 201, 33);
+    background-color:rgb(11, 199, 136);
+    transform: rotateX(145deg);
+    padding: 13px;
+    margin-top: 180px;
+    margin-left: 115px;
+}
+div#rotateY{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:rgb(204, 116, 33);
+    background-color:rgb(99, 11, 199);
+    transform: rotateY(145deg);
+    padding: 13px;
+    margin-top: 180px;
+    margin-left: 115px;
+}
+div#rotateZ{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    color:rgb(54, 54, 27);
+    background-color:rgb(199, 11, 36);
+    transform: rotateZ(145deg);
+    padding: 13px;
+    margin-top: 180px;
+    margin-left: 115px;
+}
+div#transition{
+    width: 220px;
+    height: 220px;
+    background: blue;
+    transition: background 3s, border-radius 8s;
+    transition-timing-function: ease-in;
+    transition-delay: 5s;
+}
+div#transition:hover{
+    background-color: red;
+    border-radius: 50%;
+}
+div#transition2{
+    width: 230px;
+    height: 230px;
+    margin-top: 25px;
+    background-color: yellowgreen;
+    transition: .3s ease-in-out;
+}
+div#transition2:hover{
+    background-color: red;
+   transform: scale(2.4);
+   filter: grayscale(0);
+} 
