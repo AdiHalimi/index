@@ -1,0 +1,34 @@
+/* @media(min-width:630px){
+    body{
+        background: red;
+        color: beige;
+    }
+} */
+/* @media all and (max-width:630px){
+    body{
+        background: red;
+        color: beige;
+    }
+} */
+h1{
+    border: 2px solid black;
+    padding: 23px;
+}
+/* @media all and(orientation:landscape){
+    h1{
+        font-size: 80px;
+    }
+}
+@media all and(orientation:portrait){
+    h1{
+        font-size: 30px;
+    }
+} */
+@media(min-width:630px) and (max-width:920px){
+    img{
+        display: none;
+    }
+    p{
+        column-count: 2;
+    }
+}
