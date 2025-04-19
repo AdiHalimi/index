@@ -1,18 +1,11 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
 body {
-    background: linear-gradient(to left, white, lightgray);
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
     margin: 0;
     padding: 0;
 }
-
 
 .navbar {
     background-color: #5e5151;
@@ -20,24 +13,15 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    width: 100%;
 }
-
 
 .navbar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    gap: 20px;
 }
-
-
-.navbar ul li {
-    margin: 5px 10px; 
-}
-
 
 .navbar ul li a {
     text-decoration: none;
@@ -52,27 +36,95 @@ body {
     background-color: #575757;
 }
 
+.about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #fff;
+}
 
-@media screen and (max-width: 768px) {
-    .navbar {
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1100px;
+    width: 100%;
+    background-color: #fefefe;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.about-image img {
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.about-text {
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.about-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #5e5151;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+footer {
+    width: 100%;
+    background-color: #5e5151;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .social-links a {
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+footer .social-links a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .about-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
     }
 
-    .navbar ul {
+    .about-image img {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .about-text {
+        text-align: center;
+        max-width: 90%;
+    }
+
+    footer .social-links {
         flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar ul li {
-        margin-bottom: 10px;
-    }
-
-
-    .navbar ul li a {
-        padding: 10px;
-        width: 100%;
-        text-align: left;
     }
 }
 
