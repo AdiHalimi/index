@@ -44,3 +44,18 @@ console.log(num1 > num2);
 console.log(num1 >= num2);
 console.log(num1 < num2);
 console.log(num1 <= num2);
+
+var firstName = "Digital";
+var lastName = "school";
+
+var fullName = firstName + " " + lastName;
+console.log(fullName);
+
+var test = "test123";
+console.log(`Hello from ${test}`);
+
+var age = 22;
+var age2 = 24;
+console.log(age >= 18 && age <= 65);
+console.log(age >= 18 || age <= 65);
+console.log(!(age== age2));
