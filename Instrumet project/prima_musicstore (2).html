@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prima Music Store — Instrumente muzikore</title>
+<style>
+:root{--bg:#f6f4ef;--ink:#171717;--muted:#73706a;--card:#fff;--accent:#b8793b;--line:#e5e0d8;--pic:#eee8df;--inv:#111;--invt:#fff;--hero1:#eee8dd;--hero2:#f8f7f3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141311;--ink:#f1ede6;--muted:#a39e94;--card:#1e1c19;--line:#33302b;--pic:#2a2723;--inv:#f1ede6;--invt:#141311;--hero1:#1d1a16;--hero2:#141311}}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+nav{height:76px;background:#111;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 7%;position:sticky;top:env(safe-area-inset-top,0px);z-index:10}
+.logo{font-family:Georgia,serif;font-size:26px;letter-spacing:2px}.links{display:flex;gap:30px}.links a{color:#ddd;text-decoration:none;font-size:14px}.links a:hover{color:#fff}
+.cart{border:1px solid #555;border-radius:30px;padding:10px 16px;font-size:13px;background:none;color:#fff;cursor:pointer}.cart:hover{background:#222}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero{padding:82px 7% 70px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:linear-gradient(135deg,var(--hero1),var(--hero2))}
+.hero h1{font:600 clamp(48px,6vw,82px)/.95 Georgia,serif;margin:0 0 24px}.hero p{max-width:570px;color:var(--muted);font-size:18px;line-height:1.7}
+.btn{display:inline-block;background:var(--inv);color:var(--invt);text-decoration:none;padding:15px 24px;border-radius:5px;margin-top:15px;border:0;font-size:15px;cursor:pointer}
+.hero-art{height:410px;border-radius:22px;background:radial-gradient(circle at 50% 40%,#d4a06d,#6d472e 58%,#201914);display:flex;align-items:center;justify-content:center;color:#fff;font:80px Georgia,serif;box-shadow:0 25px 70px #0002}
+section{padding:70px 7%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:30px;gap:20px}.section-head h2{font:500 40px Georgia,serif;margin:0}.section-head p{color:var(--muted)}
+.tag{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent)}
+.filters{display:flex;gap:10px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 16px;border-radius:22px;cursor:pointer;font-size:14px}.filter.active{background:var(--inv);color:var(--invt)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 15px 35px #00000018}
+.pic{height:210px;background:var(--pic);display:flex;align-items:center;justify-content:center}.pic svg{width:88%;height:88%}.pic img{width:100%;height:100%;object-fit:contain;padding:15px;display:block}.th img{width:100%;height:100%;object-fit:contain;padding:3px}
+.info{padding:18px}.info h3{margin:8px 0;font:23px Georgia,serif}.info p{color:var(--muted);font-size:13px;min-height:34px}.price{font-weight:bold;font-size:18px}
+.buy{float:right;border:0;background:var(--inv);color:var(--invt);padding:9px 13px;border-radius:5px;cursor:pointer}
+.empty{grid-column:1/-1;color:var(--muted)}
+.about{background:#151515;color:#fff}.about p{color:#bbb;max-width:700px;line-height:1.8}
+.contact{background:var(--bg)}.cwrap{display:grid;grid-template-columns:1fr 1.2fr;gap:50px}.cwrap p{color:var(--muted);line-height:1.7}
+form{display:grid;gap:14px}label{font-size:13px;color:var(--muted);display:grid;gap:6px}
+input,textarea{font:inherit;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:130px;resize:vertical}.err{color:#c0392b;font-size:12px;min-height:14px}.ok{background:#e6f4ea;color:#1e6b34;padding:14px;border-radius:8px;display:none}
+footer{padding:35px 7%;background:#0d0d0d;color:#999;display:flex;justify-content:space-between;font-size:13px}
+/* cart drawer */
+.ov{position:fixed;inset:0;background:#0007;opacity:0;pointer-events:none;transition:.25s;z-index:20}.ov.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--card);color:var(--ink);z-index:30;transform:translateX(100%);transition:.3s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.open{transform:none}.dh{display:flex;justify-content:space-between;align-items:center;padding:20px;border-bottom:1px solid var(--line)}.dh h3{margin:0;font:24px Georgia,serif}
+.x{background:none;border:0;color:var(--ink);font-size:28px;cursor:pointer;line-height:1}
+.items{flex:1;overflow:auto;padding:10px 20px}.it{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.it .th{width:64px;height:54px;background:var(--pic);border-radius:8px;display:flex}.it .th svg{width:100%;height:100%}.it b{font:16px Georgia,serif}.it small{color:var(--muted);display:block}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.rm{background:none;border:0;color:var(--muted);cursor:pointer;font-size:12px;text-decoration:underline}
+.df{padding:20px;border-top:1px solid var(--line)}.tot{display:flex;justify-content:space-between;font-size:18px;font-weight:bold;margin-bottom:14px}.df .btn{width:100%;margin:0}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:40;padding:16px}.modal.open{display:flex}.modal>div{background:var(--card);color:var(--ink);border-radius:14px;padding:26px;width:min(460px,100%);max-height:90%;overflow:auto}.modal h3{font:26px Georgia,serif;margin:0 0 6px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:#111;color:#fff;padding:12px 20px;border-radius:30px;font-size:14px;opacity:0;transition:.3s;z-index:50;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.hero,.cwrap{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.links{display:none}}
+@media(max-width:550px){.grid{grid-template-columns:1fr}.hero-art{height:280px}section{padding:50px 5%}.section-head{flex-direction:column;align-items:start}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav><div class="logo">Prima Music Store</div><div class="links"><a href="#shop">Dyqani</a><a href="#categories">Kategoritë</a><a href="#about">Rreth nesh</a><a href="#contact">Kontakti</a></div><button class="cart" id="openCart" aria-label="Hap shportën">Shporta (<span id="count">0</span>)</button></nav>
+
+<header class="hero">
+<div><div class="tag">Instrumente të përzgjedhura</div><h1>Gjej tingullin tënd.</h1><p>Pianino, kitara, violina dhe më shumë — të zgjedhura për muzikantët që çmojnë mjeshtërinë, tonin dhe dizajnin e përjetshëm.</p><a class="btn" href="#shop">Shiko koleksionin</a></div>
+<div class="hero-art" aria-hidden="true">♪</div>
+</header>
+
+<section id="categories" style="padding-bottom:30px">
+<div class="section-head"><div><div class="tag">Shfleto</div><h2>Bli sipas familjes</h2></div><p>Çdo instrument, në një vend.</p></div>
+<div class="filters" id="filters">
+<button class="filter active" data-f="all">Të gjitha</button><button class="filter" data-f="piano">Pianino</button><button class="filter" data-f="guitar">Kitara</button><button class="filter" data-f="violin">Violina</button><button class="filter" data-f="other">Instrumente të tjera</button>
+</div>
+</section>
+
+<section id="shop" style="padding-top:0"><div class="grid" id="products"></div></section>
+
+<section class="about" id="about"><div class="tag">Standardi Prima</div><h2 style="font:500 42px Georgia,serif">Instrumente të krijuara për t’u luajtur.</h2><p>Prima është një koncept modern i një dyqani premium për instrumente muzikore. Kjo platformë është krijuar për të ofruar një përvojë të thjeshtë dhe të këndshme blerjeje, kategori të organizuara qartë dhe një identitet vizual elegant.</p></section>
+
+<section class="contact" id="contact">
+<div class="cwrap">
+<div><div class="tag">Kontakti</div><h2 style="font:500 38px Georgia,serif;margin:8px 0 14px">Na shkruaj</h2><p>Ke pyetje për një instrument, transportin apo një porosi të veçantë? Dërgo një mesazh dhe do të të përgjigjemi me email.</p></div>
+<form id="cform" novalidate>
+<label>Emri<input id="cn" autocomplete="name"><span class="err"></span></label>
+<label>Email<input id="ce" type="email" autocomplete="email"><span class="err"></span></label>
+<label>Mesazhi<textarea id="cm"></textarea><span class="err"></span></label>
+<button class="btn" type="submit" style="margin:0">Dërgo mesazhin</button>
+<div class="ok" id="cok" role="status">Faleminderit! Mesazhi u dërgua. Do të të përgjigjemi së shpejti.</div>
+</form>
+</div>
+</section>
+
+<footer><span>© 2026 Prima Music Store</span><span>Krijuar për muzikantë.</span></footer>
+
+<div class="ov" id="ov"></div>
+<aside class="drawer" id="drawer" aria-label="Shporta e blerjeve">
+<div class="dh"><h3>Shporta jote</h3><button class="x" id="closeCart" aria-label="Mbyll shportën">×</button></div>
+<div class="items" id="items"></div>
+<div class="df"><div class="tot"><span>Totali</span><span id="total">$0</span></div><button class="btn" id="checkout">Përfundo porosinë</button></div>
+</aside>
+
+<div class="modal" id="modal"><div>
+<div id="co">
+<h3>Përfundimi i porosisë</h3><p style="color:var(--muted);margin:0 0 16px;font-size:14px">Ky është një demo: nuk merret asnjë pagesë.</p>
+<form id="oform" novalidate>
+<label>Emri i plotë<input id="on" autocomplete="name"><span class="err"></span></label>
+<label>Email<input id="oe" type="email" autocomplete="email"><span class="err"></span></label>
+<label>Adresa e dërgesës<input id="oa" autocomplete="street-address"><span class="err"></span></label>
+<button class="btn" type="submit" style="margin:0">Dërgo porosinë</button>
+<button class="rm" type="button" id="oc" style="justify-self:center">Anulo</button>
+</form></div>
+<div id="done" style="display:none"><h3>Porosia u dërgua</h3><p id="dmsg" style="color:var(--muted);line-height:1.6"></p><button class="btn" id="dclose" style="margin:0">Vazhdo blerjen</button></div>
+</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+var C='#2b2118',W='#f7f3ea',B='#7a4a25',G='#c9a24a';
+var S={
+grand:'<svg viewBox="0 0 200 150"><path d="M24 98V66Q24 38 70 38H138Q184 36 178 78Q172 98 150 98Z" fill="#1c1c1c"/><path d="M30 60Q34 44 70 44H136" stroke="#555" stroke-width="3" fill="none"/><rect x="24" y="98" width="128" height="14" fill="'+W+'" stroke="#111"/><path d="M38 98v14M52 98v14M66 98v14M80 98v14M94 98v14M108 98v14M122 98v14M136 98v14" stroke="#111"/><path d="M34 98v6M48 98v6M76 98v6M90 98v6M104 98v6M132 98v6" stroke="#111" stroke-width="5"/><rect x="30" y="112" width="6" height="28" fill="#111"/><rect x="142" y="112" width="6" height="28" fill="#111"/><rect x="162" y="96" width="6" height="42" fill="#111"/></svg>',
+upright:'<svg viewBox="0 0 200 150"><rect x="30" y="20" width="140" height="82" rx="4" fill="'+B+'"/><rect x="42" y="30" width="116" height="40" rx="2" fill="#5d3719"/><rect x="24" y="82" width="152" height="12" fill="'+B+'"/><rect x="40" y="94" width="120" height="12" fill="'+W+'" stroke="#111"/><path d="M52 94v12M64 94v12M76 94v12M88 94v12M100 94v12M112 94v12M124 94v12M136 94v12M148 94v12" stroke="#111"/><rect x="34" y="102" width="10" height="38" fill="'+B+'"/><rect x="156" y="102" width="10" height="38" fill="'+B+'"/><rect x="92" y="122" width="6" height="12" rx="2" fill="'+G+'"/><rect x="104" y="122" width="6" height="12" rx="2" fill="'+G+'"/></svg>',
+acoustic:'<svg viewBox="0 0 200 150"><g transform="rotate(-35 100 75)"><rect x="96" y="2" width="8" height="64" fill="#3b2a1c"/><rect x="92" y="-6" width="16" height="22" rx="3" fill="#2b1d12"/><circle cx="100" cy="92" r="30" fill="#c98a45"/><circle cx="100" cy="62" r="22" fill="#c98a45"/><circle cx="100" cy="86" r="9" fill="#1b130c"/><rect x="88" y="112" width="24" height="4" fill="#3b2a1c"/><path d="M100 10V114" stroke="#eee" stroke-width=".8"/></g></svg>',
+electric:'<svg viewBox="0 0 200 150"><g transform="rotate(-35 100 75)"><rect x="96" y="-4" width="8" height="70" fill="#2a2a2a"/><rect x="93" y="-12" width="14" height="20" rx="3" fill="#8a1f1f"/><path d="M78 74Q70 60 86 64L114 64Q132 60 122 76Q136 92 122 108Q100 128 78 108Q64 92 78 74Z" fill="#a82a2a"/><rect x="88" y="78" width="24" height="5" fill="#ddd"/><rect x="88" y="92" width="24" height="5" fill="#ddd"/><rect x="92" y="108" width="16" height="3" fill="#ddd"/><path d="M100 4V108" stroke="#eee" stroke-width=".8"/></g></svg>',
+violin:'<svg viewBox="0 0 200 150"><g transform="rotate(-30 100 75)"><rect x="96" y="2" width="8" height="52" fill="#1c1209"/><circle cx="100" cy="0" r="6" fill="#7a3d12"/><path d="M82 52Q70 52 72 70Q78 78 72 88Q62 108 84 120Q100 126 116 120Q138 108 128 88Q122 78 128 70Q130 52 118 52Z" fill="#a8551b"/><path d="M84 80q-4 10 0 16M116 80q4 10 0 16" stroke="#1c1209" stroke-width="3" fill="none"/><rect x="90" y="110" width="20" height="4" fill="#1c1209"/><path d="M98 14V110M102 14V110" stroke="#ddd" stroke-width=".6"/></g><path d="M30 120L172 28" stroke="#6b4a2a" stroke-width="2"/></svg>',
+student:'<svg viewBox="0 0 200 150"><g transform="rotate(-30 100 75)"><rect x="96" y="2" width="8" height="52" fill="#222"/><circle cx="100" cy="0" r="6" fill="#c0703a"/><path d="M82 52Q70 52 72 70Q78 78 72 88Q62 108 84 120Q100 126 116 120Q138 108 128 88Q122 78 128 70Q130 52 118 52Z" fill="#d38a4e"/><path d="M84 80q-4 10 0 16M116 80q4 10 0 16" stroke="#222" stroke-width="3" fill="none"/><rect x="90" y="110" width="20" height="4" fill="#222"/></g><path d="M30 120L172 28" stroke="#6b4a2a" stroke-width="2"/></svg>',
+trumpet:'<svg viewBox="0 0 200 150"><g fill="none" stroke="#d4a62a" stroke-width="7" stroke-linecap="round"><path d="M22 70H120"/><path d="M40 82H120Q140 82 140 66V60"/><path d="M40 58H112"/><path d="M40 58Q28 70 40 82"/></g><path d="M120 60L186 34V112L120 80Z" fill="#d4a62a"/><ellipse cx="186" cy="73" rx="7" ry="39" fill="#f0c94a"/><g fill="#8a6a10"><rect x="68" y="42" width="6" height="18" rx="2"/><rect x="82" y="42" width="6" height="18" rx="2"/><rect x="96" y="42" width="6" height="18" rx="2"/></g></svg>',
+drums:'<svg viewBox="0 0 200 150"><g stroke="#222" stroke-width="2"><rect x="78" y="62" width="44" height="40" fill="#b62d2d"/><ellipse cx="100" cy="62" rx="22" ry="7" fill="#eee"/><rect x="26" y="74" width="34" height="22" fill="#b62d2d"/><ellipse cx="43" cy="74" rx="17" ry="5" fill="#eee"/><rect x="140" y="74" width="34" height="22" fill="#b62d2d"/><ellipse cx="157" cy="74" rx="17" ry="5" fill="#eee"/><rect x="72" y="104" width="56" height="30" fill="#b62d2d"/><ellipse cx="100" cy="104" rx="28" ry="7" fill="#eee"/></g><path d="M28 30L58 60M170 30L142 60M43 96v44M157 96v44" stroke="#555" stroke-width="2"/><ellipse cx="26" cy="28" rx="22" ry="4" fill="#d4a62a"/><ellipse cx="172" cy="28" rx="22" ry="4" fill="#d4a62a"/></svg>'
+};
+/* Për foto reale: vendos PNG-të në dosjen images/ pranë kësaj skedë, me emrat te img:. Nëse mungon një foto, shfaqet ilustrimi. */
+var P=[
+{id:1,t:'piano',tag:'Pianino',n:'Grand Koncerti',d:'Piano koncerti me përmasa të plota dhe tingull të pasur.',p:8499,s:'grand',img:'images/grand-piano.png'},
+{id:2,t:'piano',tag:'Pianino',n:'Pianino Studio',d:'Pianino elegante për shtëpi dhe studio.',p:3299,s:'upright',img:'images/upright-piano.png'},
+{id:3,t:'guitar',tag:'Kitarë',n:'Kitarë Akustike Heritage',d:'Tingull i ngrohtë, ndërtim prej druri masiv.',p:1899,s:'acoustic',img:'images/acoustic-guitar.png'},
+{id:4,t:'guitar',tag:'Kitarë',n:'Kitarë Elektrike Klasike',d:'Kitarë elektrike e gjithanshme me përgjigje të butë.',p:1499,s:'electric',img:'images/electric-guitar.png'},
+{id:5,t:'violin',tag:'Violinë',n:'Violina Master',d:'Instrument i përfunduar me dorë për muzikantë të avancuar.',p:2750,s:'violin',img:'images/master-violin.png'},
+{id:6,t:'violin',tag:'Violinë',n:'Violina për Nxënës',d:'E balancuar dhe e rehatshme për të mësuar.',p:599,s:'student',img:'images/student-violin.png'},
+{id:7,t:'other',tag:'Frymore',n:'Trumpetë Profesionale',d:'Përgjigje e qartë dhe intonacion i saktë.',p:1250,s:'trumpet',img:'images/trumpet.png'},
+{id:8,t:'other',tag:'Daulle',n:'Set Daullesh Studio',d:'Set i plotë akustik për studio ose skenë.',p:1000,s:'drums',img:'images/drum-kit.png'}];
+var $=function(i){return document.getElementById(i)},money=function(n){return '$'+n.toLocaleString('en-US')};
+var cart={},cur='all';
+try{var sv=JSON.parse(localStorage.getItem('prima_cart')||'{}');if(sv&&typeof sv==='object')cart=sv}catch(e){}
+function save(){try{localStorage.setItem('prima_cart',JSON.stringify(cart))}catch(e){}}
+function pic(x){return '<img src="'+x.img+'" alt="'+x.n+'" loading="lazy" onerror="this.outerHTML=S[\''+x.s+'\']">'}
+function find(id){return P.filter(function(x){return x.id==id})[0]}
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove('show')},1800)}
+function renderProducts(){
+ var l=P.filter(function(x){return cur==='all'||x.t===cur});
+ $('products').innerHTML=l.length?l.map(function(x){return '<div class="card"><div class="pic">'+pic(x)+'</div><div class="info"><span class="tag">'+x.tag+'</span><h3>'+x.n+'</h3><p>'+x.d+'</p><span class="price">'+money(x.p)+'</span><button class="buy" data-add="'+x.id+'">Add</button></div></div>'}).join(''):'<p class="empty">Ende nuk ka instrumente në këtë kategori.</p>';
+}
+function renderCart(){
+ var ids=Object.keys(cart).filter(function(i){return find(i)&&cart[i]>0}),n=0,tot=0;
+ $('items').innerHTML=ids.length?ids.map(function(i){var x=find(i),q=cart[i];n+=q;tot+=q*x.p;return '<div class="it"><div class="th">'+pic(x)+'</div><div><b>'+x.n+'</b><small>'+money(x.p)+'</small><div class="qty"><button data-dec="'+i+'" aria-label="Zvogëlo">−</button><span>'+q+'</span><button data-inc="'+i+'" aria-label="Shto">+</button></div></div><button class="rm" data-rm="'+i+'">Hiq</button></div>'}).join(''):'<p style="color:var(--muted);padding:20px 0">Shporta është bosh. Shto një instrument për të filluar.</p>';
+ $('count').textContent=n;$('total').textContent=money(tot);$('checkout').disabled=!n;$('checkout').style.opacity=n?1:.4;save();
+}
+function openCart(o){$('drawer').classList.toggle('open',o);$('ov').classList.toggle('open',o)}
+$('filters').onclick=function(e){var b=e.target.closest('.filter');if(!b)return;document.querySelectorAll('.filter').forEach(function(x){x.classList.remove('active')});b.classList.add('active');cur=b.dataset.f;renderProducts()};
+document.addEventListener('click',function(e){
+ var t=e.target,a=t.dataset;
+ if(a.add){cart[a.add]=(cart[a.add]||0)+1;renderCart();toast(find(a.add).n+' u shtua në shportë')}
+ else if(a.inc){cart[a.inc]++;renderCart()}
+ else if(a.dec){cart[a.dec]--;if(cart[a.dec]<1)delete cart[a.dec];renderCart()}
+ else if(a.rm){delete cart[a.rm];renderCart()}
+});
+$('openCart').onclick=function(){openCart(true)};$('closeCart').onclick=$('ov').onclick=function(){openCart(false)};
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){openCart(false);$('modal').classList.remove('open')}});
+function bad(inp,m){inp.nextElementSibling.textContent=m||'';return !!m}
+var re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+$('checkout').onclick=function(){openCart(false);$('co').style.display='block';$('done').style.display='none';$('modal').classList.add('open')};
+$('oc').onclick=function(){$('modal').classList.remove('open')};
+$('oform').onsubmit=function(e){e.preventDefault();
+ var e1=bad($('on'),$('on').value.trim()?'':'Shkruaj emrin tënd'),e2=bad($('oe'),re.test($('oe').value.trim())?'':'Shkruaj një email të vlefshëm'),e3=bad($('oa'),$('oa').value.trim().length>5?'':'Shkruaj adresën e dërgesës');
+ if(e1||e2||e3)return;
+ var tot=0;Object.keys(cart).forEach(function(i){tot+=cart[i]*find(i).p});
+ $('dmsg').textContent='Faleminderit, '+$('on').value.trim()+'. Porosia jote prej '+money(tot)+' u konfirmua. Konfirmimi do të dërgohet te '+$('oe').value.trim()+'.';
+ cart={};renderCart();$('co').style.display='none';$('done').style.display='block';$('oform').reset();
+};
+$('dclose').onclick=function(){$('modal').classList.remove('open')};
+$('modal').onclick=function(e){if(e.target===this)this.classList.remove('open')};
+$('cform').onsubmit=function(e){e.preventDefault();
+ var a=bad($('cn'),$('cn').value.trim()?'':'Shkruaj emrin tënd'),b=bad($('ce'),re.test($('ce').value.trim())?'':'Shkruaj një email të vlefshëm'),c=bad($('cm'),$('cm').value.trim().length>=10?'':'Shkruaj të paktën 10 karaktere');
+ if(a||b||c){$('cok').style.display='none';return}
+ try{var m=JSON.parse(localStorage.getItem('prima_msgs')||'[]');m.push({n:$('cn').value,e:$('ce').value,m:$('cm').value,d:new Date().toISOString()});localStorage.setItem('prima_msgs',JSON.stringify(m))}catch(x){}
+ $('cok').style.display='block';$('cform').reset();
+};
+renderProducts();renderCart();
+</script>
+</body>
+</html>
